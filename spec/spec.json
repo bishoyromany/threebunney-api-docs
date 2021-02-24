@@ -19,6 +19,10 @@
     {
       "name": "Customer",
       "description": "Operations about Customer"
+    },
+    {
+      "name": "Customer Accounts",
+      "description": "Operations about Customer Accounts"
     }
   ],
   "schemes": ["https", "http"],
@@ -228,6 +232,47 @@
           }
         ]
       }
+    },
+    "/get/user/accounts": {
+      "post": {
+        "tags": ["Customer Accounts"],
+        "summary": "Get Customer Accounts",
+        "description": "",
+        "operationId": "getCustomerAccounts",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Customer Accounts",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "required": true
+                },
+                "type": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
     }
   },
   "securityDefinitions": {
@@ -310,6 +355,17 @@
       },
       "xml": {
         "name": "Customer"
+      }
+    },
+    "AccountsShow": {
+      "typ": "object",
+      "properties": {
+        "status": { "type": "string" },
+        "message": { "type": "string" },
+        "accounts": { "type": "array" }
+      },
+      "xml": {
+        "name": "Customer Accounts"
       }
     }
   }

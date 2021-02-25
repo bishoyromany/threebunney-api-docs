@@ -234,7 +234,7 @@
       }
     },
     "/get/user/accounts": {
-      "post": {
+      "get": {
         "tags": ["Customer Accounts"],
         "summary": "Get Customer Accounts",
         "description": "",
@@ -265,6 +265,40 @@
         "responses": {
           "200": {
             "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/add/user/account": {
+      "post": {
+        "tags": ["Customer Accounts"],
+        "summary": "Create New User Account",
+        "description": "",
+        "operationId": "createUserAccount",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Account Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountShow"
+            }
           }
         },
         "security": [
@@ -355,6 +389,40 @@
       },
       "xml": {
         "name": "Customer"
+      }
+    },
+    "Account": {
+      "typ": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "social_network": { "type": "string" },
+        "category": { "type": "string" },
+        "team_id": { "type": "integer" },
+        "login_type": { "type": "integer" },
+        "can_post": { "type": "integer" },
+        "pid": { "type": "integer" },
+        "name": { "type": "string" },
+        "username": { "type": "string" },
+        "token": { "type": "string" },
+        "avatar": { "type": "string" },
+        "url": { "type": "string" },
+        "data": { "type": "string" },
+        "proxy": { "type": "string" },
+        "status": { "type": "integer" }
+      },
+      "xml": {
+        "name": "Account"
+      }
+    },
+    "AccountShow": {
+      "typ": "object",
+      "properties": {
+        "status": { "type": "string" },
+        "message": { "type": "string" },
+        "account": { "type": "object" }
+      },
+      "xml": {
+        "name": "Customer Account"
       }
     },
     "AccountsShow": {

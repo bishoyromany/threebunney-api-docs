@@ -307,6 +307,46 @@
           }
         ]
       }
+    },
+    "/delete/user/account": {
+      "post": {
+        "tags": ["Customer Accounts"],
+        "summary": "Delete User Account",
+        "description": "",
+        "operationId": "deleteUserAccount",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Account Information",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountShow"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
     }
   },
   "securityDefinitions": {

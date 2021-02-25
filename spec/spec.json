@@ -23,6 +23,10 @@
     {
       "name": "Customer Accounts",
       "description": "Operations about Customer Accounts"
+    },
+    {
+      "name": "Customer Posts",
+      "description": "Operations about Customer Posts"
     }
   ],
   "schemes": ["https", "http"],

@@ -308,6 +308,40 @@
         ]
       }
     },
+    "/update/user/account": {
+      "post": {
+        "tags": ["Customer Accounts"],
+        "summary": "Update User Account",
+        "description": "",
+        "operationId": "updateUserAccount",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Account Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/AccountShow"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
     "/delete/user/account": {
       "post": {
         "tags": ["Customer Accounts"],
@@ -434,7 +468,8 @@
     "Account": {
       "typ": "object",
       "properties": {
-        "id": { "type": "string" },
+        "id": { "type": "integer" },
+        "ids": { "type": "string" },
         "social_network": { "type": "string" },
         "category": { "type": "string" },
         "team_id": { "type": "integer" },

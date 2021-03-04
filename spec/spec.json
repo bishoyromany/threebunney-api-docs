@@ -385,6 +385,40 @@
           }
         ]
       }
+    },
+    "/save/post": {
+      "post": {
+        "tags": ["Customer Posts"],
+        "summary": "Create New User Post",
+        "description": "",
+        "operationId": "createUserPost",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Post Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PostShow"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
     }
   },
   "securityDefinitions": {
@@ -513,6 +547,34 @@
       },
       "xml": {
         "name": "Customer Accounts"
+      }
+    },
+    "Post": {
+      "typ": "object",
+      "properties": {
+        "accounts": { "type": "array" },
+        "post_type": { "type": "string" },
+        "social_network": { "type": "string" },
+        "caption": { "type": "string" },
+        "time_post": { "type": "datetime" },
+        "interval_per_post": { "type": "integer" }
+      },
+      "xml": {
+        "name": "Post"
+      }
+    },
+    "PostShow": {
+      "typ": "object",
+      "properties": {
+        "accounts": { "type": "array" },
+        "post_type": { "type": "string" },
+        "social_network": { "type": "string" },
+        "caption": { "type": "string" },
+        "time_post": { "type": "datetime" },
+        "interval_per_post": { "type": "integer" }
+      },
+      "xml": {
+        "name": "ShowPost"
       }
     }
   }
